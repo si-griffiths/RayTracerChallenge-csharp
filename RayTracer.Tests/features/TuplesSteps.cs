@@ -9,31 +9,31 @@ namespace RayTracer.Tests.features
         //
         // Given A tuple
         private Tuple a;
-        [Given(@"a <- tuple\((.*), (.*), (.*), (.*)\)")]
+        [Given(@"a = tuple\((.*), (.*), (.*), (.*)\)")]
         public void GivenA_Tuple(float x, float y, float z, float w)
         {
             a = new Tuple(x, y, z, w);
         }
         
-        [Then(@"a\.x = (.*)")]
+        [Then(@"a\.x == (.*)")]
         public void ThenA_X(float x)
         {
             Assert.IsTrue(Tuple.Equal(x, a.X));
         }
         
-        [Then(@"a\.y = (.*)")]
+        [Then(@"a\.y == (.*)")]
         public void ThenA_Y(float y)
         {
             Assert.AreEqual(y, a.Y);
         }
         
-        [Then(@"a\.z = (.*)")]
+        [Then(@"a\.z == (.*)")]
         public void ThenA_Z(float z)
         {
             Assert.AreEqual(z, a.Z);
         }
         
-        [Then(@"a\.w = (.*)")]
+        [Then(@"a\.w == (.*)")]
         public void ThenA_W(float w)
         {
             Assert.AreEqual(w, a.W);
@@ -55,31 +55,31 @@ namespace RayTracer.Tests.features
         //
         // Given B Tuple
         private Tuple b; 
-        [Given(@"b <- tuple\((.*), (.*), (.*), (.*)\)")]
+        [Given(@"b = tuple\((.*), (.*), (.*), (.*)\)")]
         public void GivenB_Tuple(float x, float y, float z, float w)
         {
             b = new Tuple(x, y, z, w);
         }
 
-        [Then(@"b\.x = (.*)")]
+        [Then(@"b\.x == (.*)")]
         public void ThenB_X(float x)
         {
             Assert.AreEqual(x, b.X);
         }
 
-        [Then(@"b\.y = (.*)")]
+        [Then(@"b\.y == (.*)")]
         public void ThenB_Y(float y)
         {
             Assert.AreEqual(y, b.Y);
         }
 
-        [Then(@"b\.z = (.*)")]
+        [Then(@"b\.z == (.*)")]
         public void ThenB_Z(float z)
         {
             Assert.AreEqual(z, b.Z);
         }
 
-        [Then(@"b\.w = (.*)")]
+        [Then(@"b\.w == (.*)")]
         public void ThenB_W(float w)
         {
             Assert.AreEqual(w, b.W);
@@ -101,13 +101,13 @@ namespace RayTracer.Tests.features
         // Given Point() creates tuple with w=1
         Tuple p;
 
-        [Given(@"p <- point\((.*), (.*), (.*)\)")]
+        [Given(@"p = point\((.*), (.*), (.*)\)")]
         public void GivenP_Point(float x, float y, float z)
         {
             p = Tuple.Point(x, y, z);
         }
 
-        [Then(@"p = tuple\((.*), (.*), (.*), (.*)\)")]
+        [Then(@"p == tuple\((.*), (.*), (.*), (.*)\)")]
         public void ThenPTuple(float x, float y, float z, float w)
         {
             var t = new Tuple(x, y, z, w);
@@ -118,13 +118,13 @@ namespace RayTracer.Tests.features
         // Given Vector() creates tuple with w=0
         Tuple v;
 
-        [Given(@"v <- vector\((.*), (.*), (.*)\)")]
+        [Given(@"v = vector\((.*), (.*), (.*)\)")]
         public void GivenV_Vector(float x, float y, float z)
         {
             v = Tuple.Vector(x, y, z);
         }
 
-        [Then(@"v = tuple\((.*), (.*), (.*), (.*)\)")]
+        [Then(@"v == tuple\((.*), (.*), (.*), (.*)\)")]
         public void ThenVTuple(float x, float y, float z, float w)
         {
             var t = new Tuple(x, y, z, w);
@@ -134,13 +134,13 @@ namespace RayTracer.Tests.features
         //
         // Adding two tuples
         private Tuple aa, ab;
-        [Given(@"aa == tuple\((.*), (.*), (.*), (.*)\)")]
+        [Given(@"aa = tuple\((.*), (.*), (.*), (.*)\)")]
         public void GivenAaTuple(float x, float y, float z, float w)
         {
             aa = new Tuple(x, y, z, w);
         }
 
-        [Given(@"ab == tuple\((.*), (.*), (.*), (.*)\)")]
+        [Given(@"ab = tuple\((.*), (.*), (.*), (.*)\)")]
         public void GivenAbTuple(float x, float y, float z, float w)
         {
             ab = new Tuple(x, y, z, w);
@@ -157,7 +157,7 @@ namespace RayTracer.Tests.features
         //
         // subtracting two points
         Tuple pa, pb;
-        [Given(@"pa == point\((.*), (.*), (.*)\)")]
+        [Given(@"pa = point\((.*), (.*), (.*)\)")]
         public void GivenPaPoint(float x, float y, float z)
         {
             pa = Tuple.Point(x, y, z);
@@ -192,7 +192,7 @@ namespace RayTracer.Tests.features
             vc = Tuple.Vector(x, y, z);
         }
 
-        [Then(@"pc - vc = point\((.*), (.*), (.*)\)")]
+        [Then(@"pc - vc == point\((.*), (.*), (.*)\)")]
         public void ThenPc_VcPoint(float x, float y, float z)
         {
             var expected = Tuple.Point(x, y, z);
