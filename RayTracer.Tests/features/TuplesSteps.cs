@@ -131,6 +131,31 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(t, v);
         }
 
+        //
+        // Adding two tuples
+        private Tuple aa, ab;
+        [Given(@"aa == tuple\((.*), (.*), (.*), (.*)\)")]
+        public void GivenAaTuple(float x, float y, float z, float w)
+        {
+            aa = new Tuple(x, y, z, w);
+        }
+
+        [Given(@"ab == tuple\((.*), (.*), (.*), (.*)\)")]
+        public void GivenAbTuple(float x, float y, float z, float w)
+        {
+            ab = new Tuple(x, y, z, w);
+        }
+
+        [Then(@"aa \+ ab == tuple\((.*), (.*), (.*), (.*)\)")]
+        public void ThenAaAbTuple(float x, float y, float z, float w)
+        {
+            var expected = new Tuple(x, y, z, w);
+            var result = Tuple.Add(aa, ab);
+            Assert.AreEqual(expected, result);
+        }
+
+
+
 
 
     }
