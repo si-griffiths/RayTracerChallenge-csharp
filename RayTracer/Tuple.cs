@@ -80,11 +80,20 @@ namespace RayTracer
 
         public static Tuple Add(Tuple first, Tuple second)
         {
-            float x = first.X + second.X;
-            float y = first.Y + second.Y;
-            float z = first.Z + second.Z;
-            float w = first.W + second.W;
-            return new Tuple(x, y, z, w);
+            return new Tuple(
+                first.X + second.X, 
+                first.Y + second.Y, 
+                first.Z + second.Z, 
+                first.W + second.W);
+        }
+
+        public static object Subtract(Tuple first, Tuple second)
+        {
+            return new Tuple(
+                first.X - second.X,
+                first.Y - second.Y,
+                first.Z - second.Z,
+                first.W - second.W);
         }
     }
 }

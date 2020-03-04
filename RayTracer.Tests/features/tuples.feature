@@ -34,3 +34,9 @@ Scenario: Adding two tuples
 	And ab == tuple(-2, 3, 1, 0)
 	Then aa + ab == tuple(1, 1, 6, 1)
 
+Scenario:  Subtracting two points
+	Given pa == point(3, 2, 1)
+	And pb = point(5, 6, 7)
+	Then pa - pb == vector(-2, -4, -6)
+
+
