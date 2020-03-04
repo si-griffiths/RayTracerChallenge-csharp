@@ -39,4 +39,9 @@ Scenario:  Subtracting two points
 	And pb = point(5, 6, 7)
 	Then pa - pb == vector(-2, -4, -6)
 
+Scenario: Subtracting a vector from a point
+	Given pc = point(3, 2, 1)
+	And vc = vector(5, 6, 7)
+	Then pc - vc = point(-2, -4, -6)
+
 

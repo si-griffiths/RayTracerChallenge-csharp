@@ -177,6 +177,30 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(expected, result);
         }
 
+        //
+        // Subtracting a vector from a point
+        Tuple pc, vc;
+        [Given(@"pc = point\((.*), (.*), (.*)\)")]
+        public void GivenPcPoint(float x, float y, float z)
+        {
+            pc = Tuple.Point(x, y, z);
+        }
+
+        [Given(@"vc = vector\((.*), (.*), (.*)\)")]
+        public void GivenVcVector(float x, float y, float z)
+        {
+            vc = Tuple.Vector(x, y, z);
+        }
+
+        [Then(@"pc - vc = point\((.*), (.*), (.*)\)")]
+        public void ThenPc_VcPoint(float x, float y, float z)
+        {
+            var expected = Tuple.Point(x, y, z);
+            var result = Tuple.Subtract(pc, vc);
+            Assert.AreEqual(expected, result);
+        }
+
+
 
 
 
