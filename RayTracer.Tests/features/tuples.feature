@@ -49,3 +49,12 @@ Scenario: Subtracting two vectors
 	And vii = vector(5, 6, 7)
 	Then vi -vii = vector(-2, -4, -6)
 
+Scenario: Subtracting a vector from the zero vector
+	Given zero = vector(0, 0, 0)
+	And viii = vector(1, -2, 3)
+	Then zero - viii == vector(-1, 2, -3)
+
+Scenario: Negating a tuple
+	Given a = tuple(1, -2, 3, -4)
+	Then -a = tuple(-1, 2, -3, 4)
+

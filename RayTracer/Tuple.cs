@@ -64,6 +64,13 @@ namespace RayTracer
             }
         }
 
+        public override string ToString()
+        {
+            return String.Format("X: {0}, Y: {1}, Z: {2}, W: {3}", X, Y, Z, W);
+        }
+
+        public static Tuple operator -(Tuple a) => new Tuple(-a.X, -a.Y, -a.Z, -a.W);
+
         public static bool Equal(float a, float b)
         {
             if (Math.Abs(a -b) < EPSILON)

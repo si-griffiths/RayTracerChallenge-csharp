@@ -14,37 +14,37 @@ namespace RayTracer.Tests.features
         {
             a = new Tuple(x, y, z, w);
         }
-        
+
         [Then(@"a\.x == (.*)")]
         public void ThenA_X(float x)
         {
             Assert.IsTrue(Tuple.Equal(x, a.X));
         }
-        
+
         [Then(@"a\.y == (.*)")]
         public void ThenA_Y(float y)
         {
             Assert.AreEqual(y, a.Y);
         }
-        
+
         [Then(@"a\.z == (.*)")]
         public void ThenA_Z(float z)
         {
             Assert.AreEqual(z, a.Z);
         }
-        
+
         [Then(@"a\.w == (.*)")]
         public void ThenA_W(float w)
         {
             Assert.AreEqual(w, a.W);
         }
-        
+
         [Then(@"a is a point")]
         public void ThenAIsAPoint()
         {
             Assert.IsTrue(a.IsPoint);
         }
-        
+
         [Then(@"a is not a vector")]
         public void ThenAIsNotAVector()
         {
@@ -54,7 +54,7 @@ namespace RayTracer.Tests.features
 
         //
         // Given B Tuple
-        private Tuple b; 
+        private Tuple b;
         [Given(@"b = tuple\((.*), (.*), (.*), (.*)\)")]
         public void GivenB_Tuple(float x, float y, float z, float w)
         {
@@ -220,6 +220,40 @@ namespace RayTracer.Tests.features
         {
             var expected = Tuple.Vector(x, y, z);
             var result = Tuple.Subtract(vi, vii);
+            Assert.AreEqual(expected, result);
+        }
+
+        //
+        // Subtracting a vector from the zero vector
+        private Tuple zero, viii;
+        [Given(@"zero = vector\((.*), (.*), (.*)\)")]
+        public void GivenZeroVector(float x, float y, float z)
+        {
+            zero = Tuple.Vector(x, y, z);
+        }
+
+        [Given(@"viii = vector\((.*), (.*), (.*)\)")]
+        public void GivenViiiVector(float x, float y, float z)
+        {
+            viii = Tuple.Vector(x, y, z);
+        }
+
+        [Then(@"zero - viii == vector\((.*), (.*), (.*)\)")]
+        public void ThenZero_ViiiVector(float x, float y, float z)
+        {
+            var expected = Tuple.Vector(x, y, z);
+            var result = Tuple.Subtract(zero, viii);
+            System.Diagnostics.Trace.WriteLine("Hello");
+            Assert.AreEqual(expected, result);
+        }
+
+        //
+        // Negating a tuple
+        [Then(@"-a = tuple\((.*), (.*), (.*), (.*)\)")]
+        public void Then_ATuple(float x, float y, float z, float w)
+        {
+            var expected = new Tuple(x, y, z, w);
+            var result = -a;
             Assert.AreEqual(expected, result);
         }
 
