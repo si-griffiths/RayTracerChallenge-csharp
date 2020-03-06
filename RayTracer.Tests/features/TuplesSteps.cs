@@ -200,6 +200,29 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(expected, result);
         }
 
+        //
+        // Subtracting two vectors
+        private Tuple vi, vii;
+        [Given(@"vi = vector\((.*), (.*), (.*)\)")]
+        public void GivenViVector(float x, float y, float z)
+        {
+            vi = Tuple.Vector(x, y, z);
+        }
+
+        [Given(@"vii = vector\((.*), (.*), (.*)\)")]
+        public void GivenViiVector(float x, float y, float z)
+        {
+            vii = Tuple.Vector(x, y, z);
+        }
+
+        [Then(@"vi -vii = vector\((.*), (.*), (.*)\)")]
+        public void ThenVi_ViiVector(float x, float y, float z)
+        {
+            var expected = Tuple.Vector(x, y, z);
+            var result = Tuple.Subtract(vi, vii);
+            Assert.AreEqual(expected, result);
+        }
+
 
 
 

@@ -44,4 +44,8 @@ Scenario: Subtracting a vector from a point
 	And vc = vector(5, 6, 7)
 	Then pc - vc == point(-2, -4, -6)
 
+Scenario: Subtracting two vectors
+	Given vi = vector(3, 2, 1)
+	And vii = vector(5, 6, 7)
+	Then vi -vii = vector(-2, -4, -6)
 
