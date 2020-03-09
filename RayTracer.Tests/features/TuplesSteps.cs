@@ -257,7 +257,25 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(expected, result);
         }
 
+        //
+        // Multiplying a tuple by a scalar
+        [Then(@"a \* (.*) == tuple\((.*), (.*), (.*), (.*)\)")]
+        public void ThenATuple(float scalar, float x, float y, float z, float w)
+        {
+            var expected = new Tuple(x, y, z, w);
+            var result = a * scalar;
+            Assert.AreEqual(expected, result);
+        }
 
+        //
+        // Dividing a tuple by a scalar
+        [Then(@"a divided by (.*) = tuple\((.*), (.*), (.*), (.*)\)")]
+        public void ThenADividedByTuple(float scalar, float x, float y, float z, float w)
+        {
+            var expected = new Tuple(x, y, z, w);
+            var result = a / scalar;
+            Assert.AreEqual(expected, result);
+        }
 
 
 

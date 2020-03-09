@@ -71,6 +71,14 @@ namespace RayTracer
 
         public static Tuple operator -(Tuple a) => new Tuple(-a.X, -a.Y, -a.Z, -a.W);
 
+        public static Tuple operator *(float scalar, Tuple a) => new Tuple(a.X * scalar, a.Y * scalar, a.Z * scalar, a.W * scalar);
+
+        public static Tuple operator *(Tuple a, float scalar) => new Tuple(a.X * scalar, a.Y * scalar, a.Z * scalar, a.W * scalar);
+
+        public static Tuple operator /(float scalar, Tuple a) => new Tuple(a.X / scalar, a.Y / scalar, a.Z / scalar, a.W / scalar);
+
+        public static Tuple operator /(Tuple a, float scalar) => new Tuple(a.X / scalar, a.Y / scalar, a.Z / scalar, a.W / scalar);
+
         public static bool Equal(float a, float b)
         {
             if (Math.Abs(a -b) < EPSILON)
