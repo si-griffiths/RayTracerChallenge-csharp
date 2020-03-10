@@ -277,6 +277,13 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(expected, result);
         }
 
+        //
+        // Computing the magnitude of a vector
+        [Then(@"magnitude\(v\) = (.*)")]
+        public void ThenMagnitudeV(double magnitude)
+        {
+            Assert.AreEqual(magnitude, v.Magnitude);
+        }
 
 
 

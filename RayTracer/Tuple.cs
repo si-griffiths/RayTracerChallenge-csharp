@@ -47,6 +47,14 @@ namespace RayTracer
             }
         }
 
+        public double Magnitude
+        {
+            get
+            {
+                return Math.Sqrt((X * X) + (Y * Y) + (Z * Z) + (W * W));
+            }
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null || ! this.GetType().Equals(obj.GetType())) 

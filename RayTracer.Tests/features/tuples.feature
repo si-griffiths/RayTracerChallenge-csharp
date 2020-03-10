@@ -69,3 +69,24 @@ Scenario: Multiplying a tuple by a fraction
 Scenario: Dividing a tuple by a scalar
 	Given a = tuple(1, -2, 3, -4)
 	Then a divided by 2 = tuple(0.5, -1, 1.5, -2)
+
+Scenario: Computing the magnitude of a vector(1, 0, 0)
+	Given v = vector(1, 0, 0)
+	Then magnitude(v) = 1
+
+Scenario: Computing the magnitude of a vector(0, 1, 0)
+	Given v = vector(0, 1, 0)
+	Then magnitude(v) = 1
+
+Scenario: Computing the magnitude of a vector(0, 0, 1)
+	Given v = vector(0, 0, 1)
+	Then magnitude(v) = 1
+
+Scenario: Computing the magnitude of a vector(1, 2, 3)
+	Given v = vector(1, 2, 3)
+	Then magnitude(v) = 3.741657386773941‬3
+
+Scenario: Computing the magnitude of a vector(-1, -2, -3)
+	Given v = vector(-1, -2, -3)
+	Then magnitude(v) = 3.741657386773941‬3
+
