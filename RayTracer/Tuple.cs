@@ -8,12 +8,12 @@ namespace RayTracer
     {
         const double EPSILON = 0.00001;
 
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Z { get; set; }
-        public float W { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
+        public double W { get; set; }
 
-        public Tuple(float x, float y, float z, float w)
+        public Tuple(double x, double y, double z, double w)
         {
             this.X = x;
             this.Y = y;
@@ -21,12 +21,12 @@ namespace RayTracer
             this.W = w;
         }
 
-        public static Tuple Point(float x, float y, float z)
+        public static Tuple Point(double x, double y, double z)
         {
             return new Tuple(x, y, z, 1);
         }
 
-        public static Tuple Vector(float x, float y, float z)
+        public static Tuple Vector(double x, double y, double z)
         {
             return new Tuple(x, y, z, 0);
         }
@@ -79,15 +79,15 @@ namespace RayTracer
 
         public static Tuple operator -(Tuple a) => new Tuple(-a.X, -a.Y, -a.Z, -a.W);
 
-        public static Tuple operator *(float scalar, Tuple a) => new Tuple(a.X * scalar, a.Y * scalar, a.Z * scalar, a.W * scalar);
+        public static Tuple operator *(double scalar, Tuple a) => new Tuple(a.X * scalar, a.Y * scalar, a.Z * scalar, a.W * scalar);
 
-        public static Tuple operator *(Tuple a, float scalar) => new Tuple(a.X * scalar, a.Y * scalar, a.Z * scalar, a.W * scalar);
+        public static Tuple operator *(Tuple a, double scalar) => new Tuple(a.X * scalar, a.Y * scalar, a.Z * scalar, a.W * scalar);
 
-        public static Tuple operator /(float scalar, Tuple a) => new Tuple(a.X / scalar, a.Y / scalar, a.Z / scalar, a.W / scalar);
+        public static Tuple operator /(double scalar, Tuple a) => new Tuple(a.X / scalar, a.Y / scalar, a.Z / scalar, a.W / scalar);
 
-        public static Tuple operator /(Tuple a, float scalar) => new Tuple(a.X / scalar, a.Y / scalar, a.Z / scalar, a.W / scalar);
+        public static Tuple operator /(Tuple a, double scalar) => new Tuple(a.X / scalar, a.Y / scalar, a.Z / scalar, a.W / scalar);
 
-        public static bool Equal(float a, float b)
+        public static bool Equal(double a, double b)
         {
             if (Math.Abs(a -b) < EPSILON)
             {
@@ -117,6 +117,15 @@ namespace RayTracer
                 first.Y - second.Y,
                 first.Z - second.Z,
                 first.W - second.W);
+        }
+
+        public static Tuple Normalize(Tuple v)
+        {
+            double magnitude = v.Magnitude;
+            return new Tuple(v.X / magnitude,
+                v.Y / magnitude,
+                v.Z / magnitude,
+                v.W / magnitude);
         }
     }
 }
