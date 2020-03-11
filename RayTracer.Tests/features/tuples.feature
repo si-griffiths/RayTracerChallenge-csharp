@@ -103,4 +103,16 @@ Scenario: The magnitude of a normalized vector
 	When norm = normalize(v)
 	Then magnitude(norm) = 1
 
+Scenario: The dot product of two tuples
+	Given vi = vector(1, 2, 3)
+	And vii = vector(2, 3, 4)
+	Then dot(vi, vii) = 20
+
+Scenario: The cross product of two vectors
+	Given v = vector(1, 2, 3)
+	And vi = vector(2, 3, 4)
+	Then cross(v, vi) == vector(-1, 2, -1)
+	And cross(vi, v) == vector(1, -2, 1)
+
+
 

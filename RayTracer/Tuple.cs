@@ -127,5 +127,18 @@ namespace RayTracer
                 v.Z / magnitude,
                 v.W / magnitude);
         }
+
+        public static Tuple CrossProduct(Tuple a, Tuple b)
+        {
+            return Vector(
+                (a.Y * b.Z - a.Z * b.Y),
+                (a.Z * b.X - a.X * b.Z),
+                (a.X * b.Y - a.Y * b.X));
+        }
+
+        public static double Dot(Tuple a, Tuple b)
+        {
+            return (a.X * b.X) + (a.Y * b.Y) + (a.Z * b.Z) + (a.W * b.W);
+        }
     }
 }

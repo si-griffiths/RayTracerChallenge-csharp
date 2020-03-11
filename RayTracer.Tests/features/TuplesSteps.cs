@@ -322,7 +322,31 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(n, norm.Magnitude);
         }
 
+        //
+        // Dot product of two tuples
+        [Then(@"dot\(vi, vii\) = (.*)")]
+        public void ThenDotViVii(double dotProduct)
+        {
+            Assert.AreEqual(dotProduct, Tuple.Dot(vi, vii));
+        }
 
+        //
+        // Cross product of two vectors
+        [Then(@"cross\(v, vi\) == vector\((.*), (.*), (.*)\)")]
+        public void ThenCrossVViVector(double x, double y, double z)
+        {
+            var expected = Tuple.Vector(x, y, z);
+            var actual = Tuple.CrossProduct(v, vi);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Then(@"cross\(vi, v\) == vector\((.*), (.*), (.*)\)")]
+        public void ThenCrossViVVector(double x, double y, double z)
+        {
+            var expected = Tuple.Vector(x, y, z);
+            var actual = Tuple.CrossProduct(vi, v);
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }
