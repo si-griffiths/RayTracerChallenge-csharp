@@ -327,7 +327,7 @@ namespace RayTracer.Tests.features
         [Then(@"dot\(vi, vii\) = (.*)")]
         public void ThenDotViVii(double dotProduct)
         {
-            Assert.AreEqual(dotProduct, Tuple.Dot(vi, vii));
+            Assert.AreEqual(dotProduct, Tuple.DotProduct(vi, vii));
         }
 
         //

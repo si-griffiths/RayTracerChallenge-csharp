@@ -136,7 +136,7 @@ namespace RayTracer
                 (a.X * b.Y - a.Y * b.X));
         }
 
-        public static double Dot(Tuple a, Tuple b)
+        public static double DotProduct(Tuple a, Tuple b)
         {
             return (a.X * b.X) + (a.Y * b.Y) + (a.Z * b.Z) + (a.W * b.W);
         }
