@@ -82,11 +82,11 @@ Scenario: Computing the magnitude of a vector(0, 0, 1)
 	Given v = vector(0, 0, 1)
 	Then magnitude(v) = 1
 
-Scenario: Computing the magnitude of a vector(1, 2, 3)
+Scenario: Computing the magnitude of a vector(1, 2, 3) with float result
 	Given v = vector(1, 2, 3)
-	Then magnitude(v) = 3.741657386773941‬3
+	Then magnitude(v) == square root of (14)
 
 Scenario: Computing the magnitude of a vector(-1, -2, -3)
 	Given v = vector(-1, -2, -3)
-	Then magnitude(v) = 3.741657386773941‬3
+	Then magnitude(v) == square root of (14)
 

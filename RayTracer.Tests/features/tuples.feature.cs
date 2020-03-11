@@ -730,12 +730,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Computing the magnitude of a vector(1, 2, 3)")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Computing the magnitude of a vector(1, 2, 3) with float result")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "tuples")]
-        public virtual void ComputingTheMagnitudeOfAVector123()
+        public virtual void ComputingTheMagnitudeOfAVector123WithFloatResult()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of a vector(1, 2, 3)", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Computing the magnitude of a vector(1, 2, 3) with float result", null, ((string[])(null)));
 #line 85
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -760,7 +760,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("v = vector(1, 2, 3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 87
- testRunner.Then("magnitude(v) = 3.741657386773941‬3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("magnitude(v) == square root of (14)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -797,7 +797,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("v = vector(-1, -2, -3)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 91
- testRunner.Then("magnitude(v) = 3.741657386773941‬3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("magnitude(v) == square root of (14)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

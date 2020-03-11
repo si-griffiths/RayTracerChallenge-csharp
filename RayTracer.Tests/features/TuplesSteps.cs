@@ -285,6 +285,11 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(magnitude, v.Magnitude);
         }
 
+        [Then(@"magnitude\(v\) == square root of \((.*)\)")]
+        public void ThenMagnitudeVSquareRootOf(int magnitude)
+        {
+            Assert.AreEqual(Math.Sqrt(magnitude), v.Magnitude);
+        }
 
 
 
