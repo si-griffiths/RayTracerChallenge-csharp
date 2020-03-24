@@ -31,5 +31,44 @@ namespace RayTracer.Tests.features
         {
             Assert.AreEqual(blue, c.Blue);
         }
+
+        // Adding colors
+        private Color cA, cB;
+        [Given(@"cA = Color\((.*), (.*), (.*)\)")]
+        public void GivenCAColor(double red, double green, double blue)
+        {
+            cA = new Color(red, green, blue);
+        }
+
+        [Given(@"cB = Color\((.*), (.*), (.*)\)")]
+        public void GivenCBColor(double red, double green, double blue)
+        {
+            cB = new Color(red, green, blue);
+        }
+
+        [Then(@"cA \+ cB = color\((.*), (.*), (.*)\)")]
+        public void ThenCACBColor(double red, double green, double blue)
+        {
+            var expected = new Color(red, green, blue);
+            var actual = cA + cB;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Then(@"cA - cB = color\((.*), (.*), (.*)\)")]
+        public void ThenCA_CBColor(double red, double green, double blue)
+        {
+            var expected = new Color(red, green, blue);
+            var actual = cA - cB;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Then(@"c \* (.*) = Color\((.*), (.*), (.*)\)")]
+        public void ThenCColor(double scalar, double red, double green, double blue)
+        {
+            var expected = new Color(red, green, blue);
+            var actual = scalar * c;
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

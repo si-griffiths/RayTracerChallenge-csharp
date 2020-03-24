@@ -97,8 +97,6 @@ namespace RayTracer
             {
                 return false;
             }
-
-
         }
 
         public static Tuple Add(Tuple first, Tuple second)
