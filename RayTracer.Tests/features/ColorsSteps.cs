@@ -54,6 +54,7 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(expected, actual);
         }
 
+        // Subtracting colors
         [Then(@"cA - cB = color\((.*), (.*), (.*)\)")]
         public void ThenCA_CBColor(double red, double green, double blue)
         {
@@ -62,11 +63,21 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(expected, actual);
         }
 
+        // Multiplying a color by a scalar
         [Then(@"c \* (.*) = Color\((.*), (.*), (.*)\)")]
         public void ThenCColor(double scalar, double red, double green, double blue)
         {
             var expected = new Color(red, green, blue);
             var actual = scalar * c;
+            Assert.AreEqual(expected, actual);
+        }
+
+        // Multiplying colors
+        [Then(@"cA multiplied by cB == Color\((.*), (.*), (.*)\)")]
+        public void ThenCAMultipliedByCBColor(double red, double green, double blue)
+        {
+            var expected = cA * cB;
+            var actual = new Color(red, green, blue);
             Assert.AreEqual(expected, actual);
         }
 

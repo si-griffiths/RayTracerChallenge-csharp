@@ -23,6 +23,8 @@ namespace RayTracer
 
         public static Color operator *(Color color, double scalar) => Multiply(color, scalar);
 
+        public static Color operator *(Color first, Color second) => Multiply(first, second);
+
         public static Color operator +(Color first, Color second) => Add(first, second);
 
         public static Color operator -(Color first, Color second) => Subtract(first, second);
@@ -49,6 +51,14 @@ namespace RayTracer
                 color.Red * scalar,
                 color.Green * scalar,
                 color.Blue * scalar);
+        }
+
+        public static Color Multiply(Color first, Color second)
+        {
+            return new Color(
+                first.Red * second.Red,
+                first.Green * second.Green,
+                first.Blue * second.Blue);
         }
 
         public override bool Equals(object obj)
