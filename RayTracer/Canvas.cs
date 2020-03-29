@@ -31,5 +31,10 @@ namespace RayTracer
                 }
             }
         }
+
+        public static string CanvasToPpm(Canvas c)
+        {
+            return "";
+        }
     }
 }

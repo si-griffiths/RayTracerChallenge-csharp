@@ -36,5 +36,20 @@ namespace RayTracer.Tests
                 Assert.AreEqual(expectedColor, actualColor);
             }
         }
+
+        // Constructing the PPM header
+        private string ppm = "";
+        [When(@"ppm = CanvasToPpm\(c\)")]
+        public void WhenPpmCanvasToPpmC()
+        {
+            ppm = Canvas.CanvasToPpm(c);
+        }
+
+        [Then(@"lines one to three of ppm are")]
+        public void ThenLinesOneToThreeOfPpmAre(string multilineText)
+        {
+            Assert.AreEqual(multilineText, ppm);
+        }
+
     }
 }
