@@ -34,7 +34,11 @@ namespace RayTracer
 
         public static string CanvasToPpm(Canvas c)
         {
-            return "";
+            StringBuilder ppmText = new StringBuilder();
+            ppmText.AppendLine("P3"); // First line of PPM file = P3  *HARDCODED FOR NOW*
+            ppmText.AppendLine(c.Width + " " + c.Height); // Width and Height, space separated
+            ppmText.Append("255"); // Maximum color value *HARDCODED FOR NOW*
+            return ppmText.ToString();
         }
     }
 }
