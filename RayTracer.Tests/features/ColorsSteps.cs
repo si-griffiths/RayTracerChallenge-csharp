@@ -5,6 +5,7 @@ using TechTalk.SpecFlow;
 namespace RayTracer.Tests.features
 {
     [Binding]
+
     public class ColorsSteps
     {
         private Color c;

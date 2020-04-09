@@ -42,14 +42,71 @@ namespace RayTracer.Tests
         [When(@"ppm = CanvasToPpm\(c\)")]
         public void WhenPpmCanvasToPpmC()
         {
-            ppm = Canvas.CanvasToPpm(c);
+            ppm = c.CanvasToPpm();
         }
 
         [Then(@"lines one to three of ppm are")]
         public void ThenLinesOneToThreeOfPpmAre(string multilineText)
         {
-            Assert.AreEqual(multilineText, ppm);
+            var expectedLines = multilineText.Split(Environment.NewLine);
+            var actualLines = ppm.Split(Environment.NewLine);
+
+            Assert.AreEqual(expectedLines[0], actualLines[0]);
+            Assert.AreEqual(expectedLines[1], actualLines[1]);
+            Assert.AreEqual(expectedLines[2], actualLines[2]);
         }
+
+        // Constructing the PPM pixel data
+        private Color colorA, colorB, colorC;
+        [Given(@"colorA = Color\((.*), (.*), (.*)\)")]
+        public void GivenColorAColor(double red, double green, double blue)
+        {
+            colorA = new Color(red, green, blue);
+        }
+
+        [Given(@"colorB = Color\((.*), (.*), (.*)\)")]
+        public void GivenColorBColor(double red, double green, double blue)
+        {
+            colorB = new Color(red, green, blue);
+        }
+
+        [Given(@"colorC = Color\((.*), (.*), (.*)\)")]
+        public void GivenColorCColor(double red, double green, double blue)
+        {
+            colorC = new Color(red, green, blue);
+        }
+
+        [When(@"WritePixel\(c, (.*), (.*), colorA\)")]
+        public void WhenWritePixelCCA(int x, int y)
+        {
+            c.WritePixel(x, y, colorA);
+        }
+
+        [When(@"WritePixel\(c, (.*), (.*), colorB\)")]
+        public void WhenWritePixelCCB(int x, int y)
+        {
+            c.WritePixel(x, y, colorB);
+        }
+
+        [When(@"WritePixel\(x, (.*), (.*), colorC\)")]
+        public void WhenWritePixelXCC(int x, int y)
+        {
+            c.WritePixel(x, y, colorC);
+        }
+
+        [Then(@"lines four to six of ppm are")]
+        public void ThenLinesFourToSixOfPpmAre(string multilineText)
+        {
+            ppm = c.CanvasToPpm();
+            var expectedLines = multilineText.Split(Environment.NewLine);
+            var actualLines = ppm.Split(Environment.NewLine);
+
+            Assert.AreEqual(expectedLines[0], actualLines[3]);
+            Assert.AreEqual(expectedLines[1], actualLines[4]);
+            Assert.AreEqual(expectedLines[2], actualLines[5]);
+
+        }
+
 
     }
 }
