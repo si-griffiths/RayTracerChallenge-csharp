@@ -104,8 +104,29 @@ namespace RayTracer.Tests
             Assert.AreEqual(expectedLines[0], actualLines[3]);
             Assert.AreEqual(expectedLines[1], actualLines[4]);
             Assert.AreEqual(expectedLines[2], actualLines[5]);
-
         }
+
+        // Splitting long lines in PPM files
+        [When(@"every pixel of c is set to Color\((.*), (.*), (.*)\)")]
+        public void WhenEveryPixelOfCIsSetToColor(double red, double green, double blue)
+        {
+            var color = new Color(red, green, blue);
+            c.InitializePixels(color);
+        }
+
+        [Then(@"lines four to seven of ppm are")]
+        public void ThenLinesFourToSevenOfPpmAre(string multilineText)
+        {
+            ppm = c.CanvasToPpm();
+            var expectedLines = multilineText.Split(Environment.NewLine);
+            var actualLines = ppm.Split(Environment.NewLine);
+
+            Assert.AreEqual(expectedLines[0], actualLines[3]);
+            Assert.AreEqual(expectedLines[1], actualLines[4]);
+            Assert.AreEqual(expectedLines[2], actualLines[5]);
+            Assert.AreEqual(expectedLines[3], actualLines[6]);
+        }
+
 
 
     }

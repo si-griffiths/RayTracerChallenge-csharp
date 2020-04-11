@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace RayTracer
 {
@@ -13,24 +14,25 @@ namespace RayTracer
 
         const int MIN_COLOR = 0;
         const int MAX_COLOR = 255;
+        const int PPM_FILE_MAX_LINE_LENGTH = 70;
 
         public Canvas(int width, int height)
         {
             Width = width;
             Height = height;
 
-            InitializePixels(width, height);
+            var initialColor = new Color(0.0, 0.0, 0.0);
+            InitializePixels(initialColor);
         }
 
-        private void InitializePixels(int width, int height)
+        public void InitializePixels(Color color)
         {
-            var initialColor = new Color(0.0, 0.0, 0.0);
-            Pixels = new Color[width, height];
-            for (int x = 0; x < width; x++)
+            Pixels = new Color[Width, Height];
+            for (int x = 0; x < Width; x++)
             {
-                for (int y = 0; y < height; y++)
+                for (int y = 0; y < Height; y++)
                 {
-                    Pixels[x, y] = initialColor;
+                    Pixels[x, y] = color;
                 }
             }
         }
@@ -51,13 +53,48 @@ namespace RayTracer
             // create body
             for (int y = 0; y < Height; y++)
             {
-                string rowText = "";
+                var rowStack = new Stack<String>();
+                rowStack.Push("");
+
                 for (int x = 0; x < Width; x++)
                 {
-                    rowText += ScaleAndClamp(Pixels[x, y].Red) + " " + ScaleAndClamp(Pixels[x, y].Green) + " " + ScaleAndClamp(Pixels[x, y].Blue) + " ";
+                    string row = rowStack.Pop();
+                    if (row.Length + 3 < PPM_FILE_MAX_LINE_LENGTH)
+                    {
+                        row += ScaleAndClamp(Pixels[x, y].Red) + " ";
+                    }
+                    else
+                    {
+                        rowStack.Push(row);
+                        row = ScaleAndClamp(Pixels[x, y].Red) + " ";
+                    }
+
+                    if (row.Length + 3 < PPM_FILE_MAX_LINE_LENGTH)
+                    {
+                        row += ScaleAndClamp(Pixels[x, y].Green) + " ";
+                    }
+                    else
+                    {
+                        rowStack.Push(row);
+                        row = ScaleAndClamp(Pixels[x, y].Green) + " ";
+                    }
+
+                    if (row.Length + 3 < PPM_FILE_MAX_LINE_LENGTH)
+                    {
+                        row += ScaleAndClamp(Pixels[x, y].Blue) + " ";
+                    }
+                    else
+                    {
+                        rowStack.Push(row);
+                        row = ScaleAndClamp(Pixels[x, y].Blue) + " ";
+                    }
+                    rowStack.Push(row);
                 }
-                rowText = rowText.Trim();
-                ppmText.AppendLine(rowText);
+                
+                foreach(string row in rowStack.Reverse())
+                {
+                    ppmText.AppendLine(row.Trim());
+                }
             }
 
             return ppmText.ToString();

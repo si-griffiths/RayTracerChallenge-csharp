@@ -34,3 +34,16 @@ Scenario: Constructing the PPM pixel data
 	0 0 0 0 0 0 0 128 0 0 0 0 0 0 0
 	0 0 0 0 0 0 0 0 0 0 0 0 0 0 255
 	"""
+
+Scenario: Splitting long lines in PPM files
+	Given c = Canvas(10, 2)
+	When every pixel of c is set to Color(1, 0.8, 0.6)
+	And ppm = CanvasToPpm(c)
+	Then lines four to seven of ppm are
+         """
+         255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204
+		 153 255 204 153 255 204 153 255 204 153 255 204 153
+		 255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204
+		 153 255 204 153 255 204 153 255 204 153 255 204 153
+         """
+
