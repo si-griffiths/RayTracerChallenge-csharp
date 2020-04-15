@@ -47,3 +47,9 @@ Scenario: Splitting long lines in PPM files
 		 153 255 204 153 255 204 153 255 204 153 255 204 153
          """
 
+Scenario: PPM files are terminated by a new character
+	Given c = Canvas(5, 3)
+	When ppm = CanvasToPpm(c)
+	Then ppm ends with a newline character
+
+

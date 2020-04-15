@@ -96,7 +96,6 @@ namespace RayTracer
                     ppmText.AppendLine(row.Trim());
                 }
             }
-
             return ppmText.ToString();
         }
 

@@ -127,7 +127,14 @@ namespace RayTracer.Tests
             Assert.AreEqual(expectedLines[3], actualLines[6]);
         }
 
+        // PPM files are terminated by a new character
 
-
+        [Then(@"ppm ends with a newline character")]
+        public void ThenPpmEndsWithANewlineCharacter()
+        {
+            var ppmLines = ppm.Split(Environment.NewLine);
+            string lastLine = ppmLines[ppmLines.Length - 1];
+            Assert.AreEqual(lastLine, "");
+        }
     }
 }
