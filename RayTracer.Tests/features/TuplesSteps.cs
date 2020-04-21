@@ -150,7 +150,7 @@ namespace RayTracer.Tests.features
         public void ThenAaAbTuple(double x, double y, double z, double w)
         {
             var expected = new Tuple(x, y, z, w);
-            var result = Tuple.Add(aa, ab);
+            var result = aa + ab;
             Assert.AreEqual(expected, result);
         }
 

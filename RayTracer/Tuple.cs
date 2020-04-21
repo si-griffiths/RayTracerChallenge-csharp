@@ -79,6 +79,8 @@ namespace RayTracer
 
         public static Tuple operator -(Tuple a) => new Tuple(-a.X, -a.Y, -a.Z, -a.W);
 
+        public static Tuple operator +(Tuple first, Tuple second) => Add(first, second);
+
         public static Tuple operator *(double scalar, Tuple a) => new Tuple(a.X * scalar, a.Y * scalar, a.Z * scalar, a.W * scalar);
 
         public static Tuple operator *(Tuple a, double scalar) => new Tuple(a.X * scalar, a.Y * scalar, a.Z * scalar, a.W * scalar);
