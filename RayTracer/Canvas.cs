@@ -39,6 +39,11 @@ namespace RayTracer
 
         public void WritePixel(int x, int y, Color color)
         {
+            if (x > Width || x < 0 || y > Height || y < 0)
+            {
+                // ignore pixels that are not on the canvas
+                return;
+            }
             Pixels[x, y] = color;
         }
 
