@@ -35,3 +35,32 @@ Scenario: A 3x3 matrix ought to be representable
 	And m(1, 1) == -2
 	And m(2, 2) == 1
 
+Scenario: Matrix equality with identical matrices
+	Given the following matrixA:
+	| 1 | 2 | 3 | 4 |
+	| 1 | 2 | 3 | 4 |
+	| 5 | 6 | 7 | 8 |
+	| 9 | 8 | 7 | 6 |
+	| 5 | 4 | 3 | 2 |
+	And the following matrixB:
+	| 1 | 2 | 3 | 4 |
+	| 1 | 2 | 3 | 4 |
+	| 5 | 6 | 7 | 8 |
+	| 9 | 8 | 7 | 6 |
+	| 5 | 4 | 3 | 2 |
+	Then matrixA == matrixB
+
+Scenario: Matrix equality with different matrices
+	Given the following matrixA:
+	| 1 | 2 | 3 | 4 |
+	| 1 | 2 | 3 | 4 |
+	| 5 | 6 | 7 | 8 |
+	| 9 | 8 | 7 | 6 |
+	| 5 | 4 | 3 | 2 |
+	And the following matrixB:
+	| 1 | 2 | 3 | 4 |
+	| 2 | 3 | 4 | 5 |
+	| 6 | 7 | 8 | 9 |
+	| 8 | 7 | 6 | 5 |
+	| 4 | 3 | 2 | 2 |
+	Then matrixA not equal to matrixB

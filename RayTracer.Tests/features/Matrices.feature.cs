@@ -284,6 +284,186 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Matrix equality with identical matrices")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Matrices")]
+        public virtual void MatrixEqualityWithIdenticalMatrices()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Matrix equality with identical matrices", null, ((string[])(null)));
+#line 38
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table4.AddRow(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table4.AddRow(new string[] {
+                            "5",
+                            "6",
+                            "7",
+                            "8"});
+                table4.AddRow(new string[] {
+                            "9",
+                            "8",
+                            "7",
+                            "6"});
+                table4.AddRow(new string[] {
+                            "5",
+                            "4",
+                            "3",
+                            "2"});
+#line 39
+ testRunner.Given("the following matrixA:", ((string)(null)), table4, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table5.AddRow(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table5.AddRow(new string[] {
+                            "5",
+                            "6",
+                            "7",
+                            "8"});
+                table5.AddRow(new string[] {
+                            "9",
+                            "8",
+                            "7",
+                            "6"});
+                table5.AddRow(new string[] {
+                            "5",
+                            "4",
+                            "3",
+                            "2"});
+#line 45
+ testRunner.And("the following matrixB:", ((string)(null)), table5, "And ");
+#line hidden
+#line 51
+ testRunner.Then("matrixA == matrixB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Matrix equality with different matrices")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Matrices")]
+        public virtual void MatrixEqualityWithDifferentMatrices()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Matrix equality with different matrices", null, ((string[])(null)));
+#line 53
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table6.AddRow(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table6.AddRow(new string[] {
+                            "5",
+                            "6",
+                            "7",
+                            "8"});
+                table6.AddRow(new string[] {
+                            "9",
+                            "8",
+                            "7",
+                            "6"});
+                table6.AddRow(new string[] {
+                            "5",
+                            "4",
+                            "3",
+                            "2"});
+#line 54
+ testRunner.Given("the following matrixA:", ((string)(null)), table6, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table7.AddRow(new string[] {
+                            "2",
+                            "3",
+                            "4",
+                            "5"});
+                table7.AddRow(new string[] {
+                            "6",
+                            "7",
+                            "8",
+                            "9"});
+                table7.AddRow(new string[] {
+                            "8",
+                            "7",
+                            "6",
+                            "5"});
+                table7.AddRow(new string[] {
+                            "4",
+                            "3",
+                            "2",
+                            "2"});
+#line 60
+ testRunner.And("the following matrixB:", ((string)(null)), table7, "And ");
+#line hidden
+#line 66
+ testRunner.Then("matrixA not equal to matrixB", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

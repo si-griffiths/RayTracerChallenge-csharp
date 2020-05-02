@@ -50,5 +50,41 @@ namespace RayTracer.Tests.features
             matrix = new rtMatrix(row1[0], row1[1], row1[2], row2[0], row2[1], row2[2], row3[0], row3[1], row3[2]);
         }
 
+        private rtMatrix matrixA, matrixB;
+        [Given(@"the following matrixA:")]
+        public void GivenTheFollowingMatrixA(Table table)
+        {
+            double[] row1 = Array.ConvertAll(table.Rows[0].Values.ToArray(), double.Parse);
+            double[] row2 = Array.ConvertAll(table.Rows[1].Values.ToArray(), double.Parse);
+            double[] row3 = Array.ConvertAll(table.Rows[2].Values.ToArray(), double.Parse);
+            double[] row4 = Array.ConvertAll(table.Rows[3].Values.ToArray(), double.Parse);
+
+            matrixA = new rtMatrix(row1[0], row1[1], row1[2], row1[3], row2[0], row2[1], row2[2], row2[3], row3[0], row3[1], row3[2], row3[3], row4[0], row4[1], row4[2], row4[3]);
+        }
+
+        [Given(@"the following matrixB:")]
+        public void GivenTheFollowingMatrixB(Table table)
+        {
+            double[] row1 = Array.ConvertAll(table.Rows[0].Values.ToArray(), double.Parse);
+            double[] row2 = Array.ConvertAll(table.Rows[1].Values.ToArray(), double.Parse);
+            double[] row3 = Array.ConvertAll(table.Rows[2].Values.ToArray(), double.Parse);
+            double[] row4 = Array.ConvertAll(table.Rows[3].Values.ToArray(), double.Parse);
+
+            matrixB = new rtMatrix(row1[0], row1[1], row1[2], row1[3], row2[0], row2[1], row2[2], row2[3], row3[0], row3[1], row3[2], row3[3], row4[0], row4[1], row4[2], row4[3]);
+        }
+
+        [Then(@"matrixA == matrixB")]
+        public void ThenMatrixAMatrixB()
+        {
+            Assert.IsTrue(matrixA.Equals(matrixB));
+        }
+
+        [Then(@"matrixA not equal to matrixB")]
+        public void ThenMatrixANotEqualToMatrixB()
+        {
+            Assert.AreNotEqual(matrixA, matrixB);
+        }
+
+
     }
 }
