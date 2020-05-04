@@ -64,3 +64,25 @@ Scenario: Matrix equality with different matrices
 	| 8 | 7 | 6 | 5 |
 	| 4 | 3 | 2 | 2 |
 	Then matrixA not equal to matrixB
+
+Scenario: Multiplying two matrices
+	Given the following matrixA:
+	| 1 | 2 | 3 | 4 |
+	| 1 | 2 | 3 | 4 |
+	| 5 | 6 | 7 | 8 |
+	| 9 | 8 | 7 | 6 |
+	| 5 | 4 | 3 | 2 |
+	And the following matrixB:
+	| 1  | 2 | 3 | 4  |
+	| -2 | 1 | 2 | 3  |
+	| 3  | 2 | 1 | -1 |
+	| 4  | 3 | 6 | 5  |
+	| 1  | 2 | 7 | 8  |
+	Then matrixA * matrixB is the follwing matrix:
+	| 1  | 2  | 3   | 4   |
+	| 20 | 22 | 50  | 48  |
+	| 44 | 54 | 114 | 108 |
+	| 40 | 58 | 110 | 102 |
+	| 16 | 26 | 46  | 42  |
+
+

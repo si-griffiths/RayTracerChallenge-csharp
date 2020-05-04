@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace RayTracer
@@ -8,7 +9,7 @@ namespace RayTracer
     {
         private double[,] matrixValues;
 
-        public double[,] MatrixValues { get => matrixValues; private set => matrixValues = value; }
+        public double[,] MatrixValues { get => matrixValues; private set => matrixValues = value; } // todo: Remove this property
 
         /// <summary>
         /// Constructor for a 4x4 Matrix
@@ -63,9 +64,41 @@ namespace RayTracer
             MatrixValues = new double[3, 3] { { v1, v2, v3 }, { v4, v5, v6 }, { v7, v8, v9 } };
         }
 
+        public static rtMatrix operator *(rtMatrix first, rtMatrix second) => Multiply(first, second);
+
+        /// <summary>
+        /// Multiply two 4x4 matrices
+        /// This will not work with matrices of different sizes
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
+        /// <returns></returns>
+        public static rtMatrix Multiply(rtMatrix first, rtMatrix second)
+        {
+            var result = new rtMatrix(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0); // need a better way to initialise a 4x4 matrix
+            for(int row = 0; row < 4; row++)
+            {
+                for(int column = 0; column < 4; column++)
+                {
+                    double value =
+                        first.GetValue(row, 0) * second.GetValue(0, column) +
+                        first.GetValue(row, 1) * second.GetValue(1, column) +
+                        first.GetValue(row, 2) * second.GetValue(2, column) +
+                        first.GetValue(row, 3) * second.GetValue(3, column);
+                    result.SetValue(row, column, value);
+                }
+            }
+            return result;
+        }
+
         public double GetValue(int row, int column)
         {
             return MatrixValues[row, column];
+        }
+
+        public void SetValue(int row, int column, double value)
+        {
+            matrixValues[row, column] = value;
         }
 
         public override bool Equals(object obj)

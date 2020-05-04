@@ -464,6 +464,121 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Multiplying two matrices")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Matrices")]
+        public virtual void MultiplyingTwoMatrices()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying two matrices", null, ((string[])(null)));
+#line 68
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table8.AddRow(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table8.AddRow(new string[] {
+                            "5",
+                            "6",
+                            "7",
+                            "8"});
+                table8.AddRow(new string[] {
+                            "9",
+                            "8",
+                            "7",
+                            "6"});
+                table8.AddRow(new string[] {
+                            "5",
+                            "4",
+                            "3",
+                            "2"});
+#line 69
+ testRunner.Given("the following matrixA:", ((string)(null)), table8, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table9.AddRow(new string[] {
+                            "-2",
+                            "1",
+                            "2",
+                            "3"});
+                table9.AddRow(new string[] {
+                            "3",
+                            "2",
+                            "1",
+                            "-1"});
+                table9.AddRow(new string[] {
+                            "4",
+                            "3",
+                            "6",
+                            "5"});
+                table9.AddRow(new string[] {
+                            "1",
+                            "2",
+                            "7",
+                            "8"});
+#line 75
+ testRunner.And("the following matrixB:", ((string)(null)), table9, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table10.AddRow(new string[] {
+                            "20",
+                            "22",
+                            "50",
+                            "48"});
+                table10.AddRow(new string[] {
+                            "44",
+                            "54",
+                            "114",
+                            "108"});
+                table10.AddRow(new string[] {
+                            "40",
+                            "58",
+                            "110",
+                            "102"});
+                table10.AddRow(new string[] {
+                            "16",
+                            "26",
+                            "46",
+                            "42"});
+#line 81
+ testRunner.Then("matrixA * matrixB is the follwing matrix:", ((string)(null)), table10, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
