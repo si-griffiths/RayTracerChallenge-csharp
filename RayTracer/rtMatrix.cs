@@ -66,6 +66,10 @@ namespace RayTracer
 
         public static rtMatrix operator *(rtMatrix first, rtMatrix second) => Multiply(first, second);
 
+        public static Tuple operator *(rtMatrix matrix, Tuple tuple) => Multiply(matrix, tuple);
+
+        public static Tuple operator *(Tuple tuple, rtMatrix matrix) => Multiply(matrix, tuple);
+
         /// <summary>
         /// Multiply two 4x4 matrices
         /// This will not work with matrices of different sizes
@@ -89,6 +93,16 @@ namespace RayTracer
                 }
             }
             return result;
+        }
+
+        public static Tuple Multiply(rtMatrix matrix, Tuple tuple)
+        {
+            double x = (matrix.GetValue(0, 0) * tuple.X) + (matrix.GetValue(0, 1) * tuple.Y) + (matrix.GetValue(0, 2) * tuple.Z) + (matrix.GetValue(0, 3) * tuple.W);
+            double y = (matrix.GetValue(1, 0) * tuple.X) + (matrix.GetValue(1, 1) * tuple.Y) + (matrix.GetValue(1, 2) * tuple.Z) + (matrix.GetValue(1, 3) * tuple.W);
+            double z = (matrix.GetValue(2, 0) * tuple.X) + (matrix.GetValue(2, 1) * tuple.Y) + (matrix.GetValue(2, 2) * tuple.Z) + (matrix.GetValue(2, 3) * tuple.W);
+            double w = (matrix.GetValue(3, 0) * tuple.X) + (matrix.GetValue(3, 1) * tuple.Y) + (matrix.GetValue(3, 2) * tuple.Z) + (matrix.GetValue(3, 3) * tuple.W);
+            
+            return new Tuple(x, y, z, w);
         }
 
         public double GetValue(int row, int column)

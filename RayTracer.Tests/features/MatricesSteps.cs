@@ -79,6 +79,24 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(expected, result);
         }
 
+        private Tuple tupleB;
+        [Given(@"tupleB = tuple\((.*), (.*), (.*), (.*)\)")]
+        public void GivenTupleBTuple(double x, double y, double z, double w)
+        {
+            tupleB = new Tuple(x, y, z, w);
+        }
+
+        [Then(@"matrixA \* tupleB = tuple\((.*), (.*), (.*), (.*)\)")]
+        public void ThenMatrixATupleBTuple(double x, double y, double z, double w)
+        {
+            var expected = new Tuple(x, y, z, w);
+            var actual = matrixA * tupleB;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
         /// <summary>
         /// Helper method to create a matrix from a SpecFlow table
         /// </summary>

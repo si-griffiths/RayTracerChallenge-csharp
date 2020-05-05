@@ -579,6 +579,71 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A matrix multiplied by a tuple")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Matrices")]
+        public virtual void AMatrixMultipliedByATuple()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A matrix multiplied by a tuple", null, ((string[])(null)));
+#line 88
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table11.AddRow(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table11.AddRow(new string[] {
+                            "2",
+                            "4",
+                            "4",
+                            "2"});
+                table11.AddRow(new string[] {
+                            "8",
+                            "6",
+                            "4",
+                            "1"});
+                table11.AddRow(new string[] {
+                            "0",
+                            "0",
+                            "0",
+                            "1"});
+#line 89
+ testRunner.Given("the following matrixA:", ((string)(null)), table11, "Given ");
+#line hidden
+#line 95
+ testRunner.And("tupleB = tuple(1, 2, 3, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 96
+ testRunner.Then("matrixA * tupleB = tuple(18, 24, 33, 1)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
