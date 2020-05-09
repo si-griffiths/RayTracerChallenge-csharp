@@ -29,10 +29,7 @@ namespace RayTracer.Tests.features
         [Given(@"the following two by two matrix m:")]
         public void GivenTheFollowingTwoByTwoMatrixM(Table table)
         {
-            double[] row1 = Array.ConvertAll(table.Rows[0].Values.ToArray(), double.Parse);
-            double[] row2 = Array.ConvertAll(table.Rows[1].Values.ToArray(), double.Parse);
-
-            matrix = new rtMatrix(row1[0], row1[1], row2[0], row2[1]);
+            matrix = Create2x2MatrixFromTable(table);
         }
 
         [Given(@"the following three by three matrix m:")]
