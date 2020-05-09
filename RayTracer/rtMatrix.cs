@@ -113,6 +113,24 @@ namespace RayTracer
             matrixValues[row, column] = value;
         }
 
+        /// <summary>
+        /// Transposes the current matrix
+        /// </summary>
+        /// <returns>A transposed matrix</returns>
+        public rtMatrix Transpose()
+        {
+            var transposedMatrix = new rtMatrix(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            for(int row = 0; row < 4; row++)
+            {
+                for(int column = 0; column < 4; column++)
+                {
+                    double value = this.GetValue(row, column);
+                    transposedMatrix.SetValue(column, row, value); // reverse the row and column to transpose the value
+                }
+            }
+            return transposedMatrix;
+        }
+
         public override bool Equals(object obj)
         {
             // this will not work comparing matrices of different sizes

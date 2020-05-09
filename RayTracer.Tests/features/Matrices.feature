@@ -97,10 +97,30 @@ Scenario: A matrix multiplied by a tuple
 
 Scenario: Multiplying a matrix by the identity matrix
 	Given the following matrixA:
-	| 1 | 2 | 3  | 4  |
-	| 0 | 1 | 2  | 4  |
-	| 1 | 2 | 4  | 8  |
-	| 2 | 4 | 8  | 16 |
-	| 4 | 8 | 16 | 32 |
+		| 1 | 2 | 3  | 4  |
+		| 0 | 1 | 2  | 4  |
+		| 1 | 2 | 4  | 8  |
+		| 2 | 4 | 8  | 16 |
+		| 4 | 8 | 16 | 32 |
 	Then matrixA * identity_matrix == matrixA
+
+Scenario: Transposing a matrix
+	Given the following matrixA:
+		| 1 | 2 | 3 | 4 |
+		| 0 | 9 | 3 | 0 |
+		| 9 | 8 | 0 | 8 |
+		| 1 | 8 | 5 | 3 |
+		| 0 | 0 | 5 | 8 |
+	Then Transpose(matrixA) is the following matrix:
+		| 1 | 2 | 3 | 4 |
+		| 0 | 9 | 1 | 0 |
+		| 9 | 8 | 8 | 0 |
+		| 3 | 0 | 5 | 5 |
+		| 0 | 8 | 3 | 8 |
+
+Scenario: Transposing the identity matrix
+	Given matrixA = Transpose(identity_matrix)
+	Then matrixA == identity_matrix
+
+
 

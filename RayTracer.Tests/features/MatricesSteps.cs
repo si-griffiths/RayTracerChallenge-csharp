@@ -120,5 +120,28 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(expected, actual);
         }
 
+        [Then(@"Transpose\(matrixA\) is the following matrix:")]
+        public void ThenTransposeMatrixAIsTheFollowingMatrix(Table table)
+        {
+            var expected = Create4x4MatrixFromTable(table);
+            var actual = matrixA.Transpose();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Given(@"matrixA = Transpose\(identity_matrix\)")]
+        public void GivenMatrixATransposeIdentity_Matrix()
+        {
+            var identityMatrix = rtMatrix.IdentityMatrix();
+            matrixA = identityMatrix.Transpose();
+        }
+
+        [Then(@"matrixA == identity_matrix")]
+        public void ThenMatrixAIdentity_Matrix()
+        {
+            Assert.AreEqual(rtMatrix.IdentityMatrix(), matrixA);
+        }
+
+
     }
 }
