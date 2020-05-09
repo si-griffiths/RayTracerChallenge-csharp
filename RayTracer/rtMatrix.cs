@@ -9,8 +9,6 @@ namespace RayTracer
     {
         private double[,] matrixValues;
 
-        public double[,] MatrixValues { get => matrixValues; private set => matrixValues = value; } // todo: Remove this property
-
         /// <summary>
         /// Constructor for a 4x4 Matrix
         /// </summary>
@@ -32,7 +30,7 @@ namespace RayTracer
         /// <param name="v16"></param>
         public rtMatrix(double v1, double v2, double v3, double v4, double v5, double v6, double v7, double v8, double v9, double v10, double v11, double v12, double v13, double v14, double v15, double v16)
         {
-            MatrixValues = new double[4, 4] { { v1, v2, v3, v4 }, { v5, v6, v7, v8 }, { v9, v10, v11, v12 }, { v13, v14, v15, v16 } };
+            matrixValues = new double[4, 4] { { v1, v2, v3, v4 }, { v5, v6, v7, v8 }, { v9, v10, v11, v12 }, { v13, v14, v15, v16 } };
         }
 
         /// <summary>
@@ -44,7 +42,7 @@ namespace RayTracer
         /// <param name="v4"></param>
         public rtMatrix(double v1, double v2, double v3, double v4)
         {
-            MatrixValues = new double[2, 2] { { v1, v2 }, { v3, v4 } };
+            matrixValues = new double[2, 2] { { v1, v2 }, { v3, v4 } };
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace RayTracer
         /// <param name="v9"></param>
         public rtMatrix(double v1, double v2, double v3, double v4, double v5, double v6, double v7, double v8, double v9)
         {
-            MatrixValues = new double[3, 3] { { v1, v2, v3 }, { v4, v5, v6 }, { v7, v8, v9 } };
+            matrixValues = new double[3, 3] { { v1, v2, v3 }, { v4, v5, v6 }, { v7, v8, v9 } };
         }
 
         public static rtMatrix operator *(rtMatrix first, rtMatrix second) => Multiply(first, second);
@@ -107,7 +105,7 @@ namespace RayTracer
 
         public double GetValue(int row, int column)
         {
-            return MatrixValues[row, column];
+            return matrixValues[row, column];
         }
 
         public void SetValue(int row, int column, double value)
