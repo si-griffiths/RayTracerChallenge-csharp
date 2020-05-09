@@ -95,3 +95,12 @@ Scenario: A matrix multiplied by a tuple
 	And tupleB = tuple(1, 2, 3, 1)
 	Then matrixA * tupleB = tuple(18, 24, 33, 1)
 
+Scenario: Multiplying a matrix by the identity matrix
+	Given the following matrixA:
+	| 1 | 2 | 3  | 4  |
+	| 0 | 1 | 2  | 4  |
+	| 1 | 2 | 4  | 8  |
+	| 2 | 4 | 8  | 16 |
+	| 4 | 8 | 16 | 32 |
+	Then matrixA * identity_matrix == matrixA
+

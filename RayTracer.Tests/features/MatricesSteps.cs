@@ -95,8 +95,6 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(expected, actual);
         }
 
-
-
         /// <summary>
         /// Helper method to create a matrix from a SpecFlow table
         /// </summary>
@@ -112,5 +110,15 @@ namespace RayTracer.Tests.features
             var matrix = new rtMatrix(row1[0], row1[1], row1[2], row1[3], row2[0], row2[1], row2[2], row2[3], row3[0], row3[1], row3[2], row3[3], row4[0], row4[1], row4[2], row4[3]);
             return matrix;
         }
+
+        [Then(@"matrixA \* identity_matrix == matrixA")]
+        public void ThenMatrixAIdentity_MatrixMatrixA()
+        {
+            var expected = matrixA;
+            var actual = matrixA * rtMatrix.IdentityMatrix();
+
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

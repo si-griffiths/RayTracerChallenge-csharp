@@ -644,6 +644,68 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Multiplying a matrix by the identity matrix")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Matrices")]
+        public virtual void MultiplyingAMatrixByTheIdentityMatrix()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiplying a matrix by the identity matrix", null, ((string[])(null)));
+#line 98
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table12.AddRow(new string[] {
+                            "0",
+                            "1",
+                            "2",
+                            "4"});
+                table12.AddRow(new string[] {
+                            "1",
+                            "2",
+                            "4",
+                            "8"});
+                table12.AddRow(new string[] {
+                            "2",
+                            "4",
+                            "8",
+                            "16"});
+                table12.AddRow(new string[] {
+                            "4",
+                            "8",
+                            "16",
+                            "32"});
+#line 99
+ testRunner.Given("the following matrixA:", ((string)(null)), table12, "Given ");
+#line hidden
+#line 105
+ testRunner.Then("matrixA * identity_matrix == matrixA", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

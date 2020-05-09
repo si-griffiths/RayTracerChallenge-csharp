@@ -141,5 +141,10 @@ namespace RayTracer
                 return true;
             }
         }
+
+        public static rtMatrix IdentityMatrix()
+        {
+            return new rtMatrix(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        }
     }
 }
