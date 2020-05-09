@@ -122,5 +122,13 @@ Scenario: Transposing the identity matrix
 	Given matrixA = Transpose(identity_matrix)
 	Then matrixA == identity_matrix
 
+Scenario: Calculating the determinant of a 2x2 matrix
+	Given the following two by two matrixA:
+		| 1  | 2 |
+		| 1  | 5 |
+		| -3 | 2 |
+	Then determinant(A) == 17
+
+
 
 

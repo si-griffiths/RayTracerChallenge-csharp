@@ -111,6 +111,20 @@ namespace RayTracer.Tests.features
             return matrix;
         }
 
+        /// <summary>
+        /// Helper method to create a 2x2 matrix from a SpecFlow table
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        private rtMatrix Create2x2MatrixFromTable(Table table)
+        {
+            double[] row1 = Array.ConvertAll(table.Rows[0].Values.ToArray(), double.Parse);
+            double[] row2 = Array.ConvertAll(table.Rows[1].Values.ToArray(), double.Parse);
+
+            var matrix = new rtMatrix(row1[0], row1[1], row2[0], row2[1]);
+            return matrix;
+        }
+
         [Then(@"matrixA \* identity_matrix == matrixA")]
         public void ThenMatrixAIdentity_MatrixMatrixA()
         {
@@ -140,6 +154,19 @@ namespace RayTracer.Tests.features
         public void ThenMatrixAIdentity_Matrix()
         {
             Assert.AreEqual(rtMatrix.IdentityMatrix(), matrixA);
+        }
+
+        [Given(@"the following two by two matrixA:")]
+        public void GivenTheFollowingTwoByTwoMatrixA(Table table)
+        {
+            matrixA = Create2x2MatrixFromTable(table);
+        }
+
+        [Then(@"determinant\(A\) == (.*)")]
+        public void ThenDeterminantA(double determinant)
+        {
+            double actual = rtMatrix.Determinant(matrixA);
+            Assert.AreEqual(determinant, actual);
         }
 
 

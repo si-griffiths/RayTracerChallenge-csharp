@@ -103,6 +103,17 @@ namespace RayTracer
             return new Tuple(x, y, z, w);
         }
 
+        public static double Determinant(rtMatrix matrix)
+        {
+            // assuming a 2x2 matrix for now...
+            var a = matrix.GetValue(0, 0);
+            var b = matrix.GetValue(0, 1);
+            var c = matrix.GetValue(1, 0);
+            var d = matrix.GetValue(1, 1);
+            return (a * d) - (b * c);
+        }
+
+
         public double GetValue(int row, int column)
         {
             return matrixValues[row, column];
