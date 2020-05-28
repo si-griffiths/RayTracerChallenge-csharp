@@ -197,5 +197,20 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(expected, actual);
         }
 
+        [Given(@"the following four_by_four matrix matrixA:")]
+        public void GivenTheFollowingFour_By_FourMatrixMatrixA(Table table)
+        {
+            matrixA = Create4x4MatrixFromTable(table);
+        }
+
+        [Then(@"Submatrix\(matrixA, (.*), (.*)\) is the following three_by_three matrix:")]
+        public void ThenSubmatrixMatrixAIsTheFollowingThree_By_ThreeMatrix(int row, int column, Table table)
+        {
+            var expected = Create3x3MatrixFromTable(table);
+            var actual = matrixA.Submatrix(row, column);
+
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

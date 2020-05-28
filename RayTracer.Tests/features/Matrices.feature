@@ -140,4 +140,16 @@ Scenario: A submatrix of a three_by_three matrix is a two_by_two matrix
 		| -3 | 2 |
 		| 0  | 6 |
 
+Scenario: A submatrix of a four_by_four matrix is a three_by_three matrix
+	Given the following four_by_four matrix matrixA:
+		| 1  | 2 | 3  | 4 |
+		| -6 | 1 | 1  | 6 |
+		| -8 | 5 | 8  | 6 |
+		| -1 | 0 | 8  | 2 |
+		| -7 | 1 | -1 | 1 |
+	Then Submatrix(matrixA, 2, 1) is the following three_by_three matrix:
+         | 1  | 2  | 3 |
+         | -6 | 1  | 6 |
+         | -8 | 8  | 6 |
+         | -7 | -1 | 1 |
 

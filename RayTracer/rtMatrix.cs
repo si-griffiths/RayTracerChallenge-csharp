@@ -121,17 +121,35 @@ namespace RayTracer
         /// <returns></returns>
         public rtMatrix Submatrix(int rowForRemoval, int columnForRemoval)
         {
-            // assuming this a 3x3 matrix for now...
-            var submatrix = new rtMatrix(0, 0, 0, 0, 0, 0, 0, 0, 0);
+            rtMatrix submatrix;
+            int matrixSize = 0;
+            switch (matrixValues.Length)
+            {
+                // 4x4
+                case 16:
+                    submatrix = new rtMatrix(0, 0, 0, 0, 0, 0, 0, 0, 0);
+                    matrixSize = 3;
+                    break;
+
+                // 3x3
+                case 9:
+                    submatrix = new rtMatrix(0, 0, 0, 0);
+                    matrixSize = 2;
+                    break;
+                
+                default:
+                    throw new Exception("Cannot create a submatrix from a matrix of this size");
+            }
+
             int ar = 0; // the original matrix row
-            for (int sr = 0; sr <2; sr++)
+            for (int sr = 0; sr < matrixSize; sr++)
             {
                 if (ar == rowForRemoval)
                 { 
                     ar++;
                 }
                 int ac = 0; // the original matrix column
-                for (int sc = 0; sc < 2; sc ++)
+                for (int sc = 0; sc < matrixSize; sc ++)
                 {
                     if (ac == columnForRemoval)
                     {

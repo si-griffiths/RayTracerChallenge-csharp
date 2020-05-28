@@ -938,6 +938,84 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A submatrix of a four_by_four matrix is a three_by_three matrix")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Matrices")]
+        public virtual void ASubmatrixOfAFour_By_FourMatrixIsAThree_By_ThreeMatrix()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A submatrix of a four_by_four matrix is a three_by_three matrix", null, ((string[])(null)));
+#line 143
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3",
+                            "4"});
+                table18.AddRow(new string[] {
+                            "-6",
+                            "1",
+                            "1",
+                            "6"});
+                table18.AddRow(new string[] {
+                            "-8",
+                            "5",
+                            "8",
+                            "6"});
+                table18.AddRow(new string[] {
+                            "-1",
+                            "0",
+                            "8",
+                            "2"});
+                table18.AddRow(new string[] {
+                            "-7",
+                            "1",
+                            "-1",
+                            "1"});
+#line 144
+ testRunner.Given("the following four_by_four matrix matrixA:", ((string)(null)), table18, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                            "1",
+                            "2",
+                            "3"});
+                table19.AddRow(new string[] {
+                            "-6",
+                            "1",
+                            "6"});
+                table19.AddRow(new string[] {
+                            "-8",
+                            "8",
+                            "6"});
+                table19.AddRow(new string[] {
+                            "-7",
+                            "-1",
+                            "1"});
+#line 150
+ testRunner.Then("Submatrix(matrixA, 2, 1) is the following three_by_three matrix:", ((string)(null)), table19, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
