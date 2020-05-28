@@ -6,6 +6,7 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace RayTracer.Tests.features
 {
@@ -93,7 +94,7 @@ namespace RayTracer.Tests.features
         }
 
         /// <summary>
-        /// Helper method to create a matrix from a SpecFlow table
+        /// Helper method to create a 4x4 matrix from a SpecFlow table
         /// </summary>
         /// <param name="table"></param>
         /// <returns></returns>
@@ -105,6 +106,21 @@ namespace RayTracer.Tests.features
             double[] row4 = Array.ConvertAll(table.Rows[3].Values.ToArray(), double.Parse);
 
             var matrix = new rtMatrix(row1[0], row1[1], row1[2], row1[3], row2[0], row2[1], row2[2], row2[3], row3[0], row3[1], row3[2], row3[3], row4[0], row4[1], row4[2], row4[3]);
+            return matrix;
+        }
+
+        /// <summary>
+        /// Helper method to create a 3x3 matrix from a SpecFlow table
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        private rtMatrix Create3x3MatrixFromTable(Table table)
+        {
+            double[] row1 = Array.ConvertAll(table.Rows[0].Values.ToArray(), double.Parse);
+            double[] row2 = Array.ConvertAll(table.Rows[1].Values.ToArray(), double.Parse);
+            double[] row3 = Array.ConvertAll(table.Rows[2].Values.ToArray(), double.Parse);
+
+            var matrix = new rtMatrix(row1[0], row1[1], row1[2], row2[0], row2[1], row2[2], row3[0], row3[1], row3[2]);
             return matrix;
         }
 
@@ -166,6 +182,20 @@ namespace RayTracer.Tests.features
             Assert.AreEqual(determinant, actual);
         }
 
+        [Given(@"the following three_by_three matrix matrixA")]
+        public void GivenTheFollowingThree_By_ThreeMatrixMatrixA(Table table)
+        {
+            matrixA = Create3x3MatrixFromTable(table);
+        }
+
+        [Then(@"Submatrix\(matrixA, (.*), (.*)\) is the following two_by_two matrix:")]
+        public void ThenSubmatrixMatrixAIsTheFollowingTwo_By_TwoMatrix(int row, int column, Table table)
+        {
+            var expected = Create2x2MatrixFromTable(table);
+            var actual = matrixA.Submatrix(row, column);
+
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }

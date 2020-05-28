@@ -129,6 +129,15 @@ Scenario: Calculating the determinant of a 2x2 matrix
 		| -3 | 2 |
 	Then determinant(A) == 17
 
-
+Scenario: A submatrix of a three_by_three matrix is a two_by_two matrix
+	Given the following three_by_three matrix matrixA
+		| 1  | 2 | 3  |
+		| 1  | 5 | 0  |
+		| -3 | 2 | 7  |
+		| 0  | 6 | -3 |
+	Then Submatrix(matrixA, 0, 2) is the following two_by_two matrix:
+		| 1  | 2 |
+		| -3 | 2 |
+		| 0  | 6 |
 
 

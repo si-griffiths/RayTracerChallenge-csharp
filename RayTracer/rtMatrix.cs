@@ -113,6 +113,39 @@ namespace RayTracer
             return (a * d) - (b * c);
         }
 
+        /// <summary>
+        /// Create a submatrix from the given matrix with the indicated row and column removed
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <returns></returns>
+        public rtMatrix Submatrix(int rowForRemoval, int columnForRemoval)
+        {
+            // assuming this a 3x3 matrix for now...
+            var submatrix = new rtMatrix(0, 0, 0, 0, 0, 0, 0, 0, 0);
+            int ar = 0; // the original matrix row
+            for (int sr = 0; sr <2; sr++)
+            {
+                if (ar == rowForRemoval)
+                { 
+                    ar++;
+                }
+                int ac = 0; // the original matrix column
+                for (int sc = 0; sc < 2; sc ++)
+                {
+                    if (ac == columnForRemoval)
+                    {
+                        ac++;
+                    }
+                    var value = this.GetValue(ar, ac);
+                    submatrix.SetValue(sr, sc, value);
+                    ac++;
+                }
+                ar++;
+            }
+
+            return submatrix;
+        }
 
         public double GetValue(int row, int column)
         {
