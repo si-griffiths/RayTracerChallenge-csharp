@@ -210,6 +210,26 @@ namespace RayTracer.Tests.features
             var actual = matrixA.Submatrix(row, column);
 
             Assert.AreEqual(expected, actual);
+        
+        }
+
+        [Given(@"matrixB = Submatrix\(matrixA, (.*), (.*)\)")]
+        public void GivenMatrixBSubmatrixMatrixA(int row, int column)
+        {
+            matrixB = matrixA.Submatrix(row, column);
+        }
+
+        [Then(@"Determinant\(matrixB\) = (.*)")]
+        public void ThenDeterminantMatrixB(double determinant)
+        {
+            Assert.AreEqual(determinant, rtMatrix.Determinant(matrixB));
+        }
+
+        [Then(@"Minor\(matrixA, (.*), (.*)\) = (.*)")]
+        public void ThenMinorMatrixA(int row, int column, double minorValue)
+        {
+            double actual = matrixA.Minor(row, column);
+            Assert.AreEqual(minorValue, actual);
         }
 
     }

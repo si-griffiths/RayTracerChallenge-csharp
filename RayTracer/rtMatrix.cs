@@ -224,5 +224,18 @@ namespace RayTracer
         {
             return new rtMatrix(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
         }
+
+        /// <summary>
+        /// The Minor value is determinant of the Submatrix(row, column)
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <returns></returns>
+        public double Minor(int row, int column)
+        {
+            var submatrix = this.Submatrix(row, column);
+            var determinant = Determinant(submatrix);
+            return determinant;
+        }
     }
 }

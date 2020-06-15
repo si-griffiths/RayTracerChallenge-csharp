@@ -153,3 +153,14 @@ Scenario: A submatrix of a four_by_four matrix is a three_by_three matrix
          | -8 | 8  | 6 |
          | -7 | -1 | 1 |
 
+Scenario: Calculating the minor of a 3x3 matrix
+	Given the following three_by_three matrix matrixA
+	| 1 | 2  | 3  |
+	| 3 | 5  | 0  |
+	| 2 | -1 | -7 |
+	| 6 | -1 | 5  |
+	And matrixB = Submatrix(matrixA, 1, 0)
+	Then Determinant(matrixB) = 25
+	And Minor(matrixA, 1, 0) = 25
+	
+
