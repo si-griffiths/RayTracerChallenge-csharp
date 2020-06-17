@@ -219,17 +219,24 @@ namespace RayTracer.Tests.features
             matrixB = matrixA.Submatrix(row, column);
         }
 
-        [Then(@"Determinant\(matrixB\) = (.*)")]
+        [Then(@"Determinant\(matrixB\) == (.*)")]
         public void ThenDeterminantMatrixB(double determinant)
         {
             Assert.AreEqual(determinant, rtMatrix.Determinant(matrixB));
         }
 
-        [Then(@"Minor\(matrixA, (.*), (.*)\) = (.*)")]
-        public void ThenMinorMatrixA(int row, int column, double minorValue)
+        [Then(@"Minor\(matrixA, (.*), (.*)\) == (.*)")]
+        public void ThenMinorMatrixA(int row, int column, double expectedMinor)
         {
             double actual = matrixA.Minor(row, column);
-            Assert.AreEqual(minorValue, actual);
+            Assert.AreEqual(expectedMinor, actual);
+        }
+
+        [Then(@"Cofactor\(matrixA, (.*), (.*)\) == (.*)")]
+        public void ThenCofactorMatrixA(int row, int column, double expectedCofactor)
+        {
+            double actualCofactor = matrixA.Cofactor(row, column);
+            Assert.AreEqual(expectedCofactor, actualCofactor);
         }
 
     }

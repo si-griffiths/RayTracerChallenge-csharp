@@ -237,5 +237,22 @@ namespace RayTracer
             var determinant = Determinant(submatrix);
             return determinant;
         }
+
+        /// <summary>
+        /// Cofactors are minors that have (possibly) had their sign changed
+        /// The minor is negated if row+colum is an odd number
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <returns></returns>
+        public double Cofactor(int row, int column)
+        {
+            double minor = this.Minor(row, column);
+            if ((row + column) % 2 == 0)
+            {
+                return minor;
+            }
+            return -minor;
+        }
     }
 }

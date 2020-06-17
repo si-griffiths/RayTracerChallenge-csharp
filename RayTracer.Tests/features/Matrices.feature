@@ -160,7 +160,18 @@ Scenario: Calculating the minor of a 3x3 matrix
 	| 2 | -1 | -7 |
 	| 6 | -1 | 5  |
 	And matrixB = Submatrix(matrixA, 1, 0)
-	Then Determinant(matrixB) = 25
-	And Minor(matrixA, 1, 0) = 25
+	Then Determinant(matrixB) == 25
+	And Minor(matrixA, 1, 0) == 25
 	
+Scenario: Calculating a cofactor of a 3x3 matrix
+	Given the following three_by_three matrix matrixA
+         | 1 | 2  | 3  |
+         | 3 | 5  | 0  |
+         | 2 | -1 | -7 |
+         | 6 | -1 | 5  |
+	Then Minor(matrixA, 0, 0) == -12
+	And Cofactor(matrixA, 0, 0) == -12
+	And Minor(matrixA, 1, 0) == 25
+	And Cofactor(matrixA, 1, 0) == -25
+
 
